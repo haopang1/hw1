@@ -104,8 +104,10 @@ CREATE TABLE people (
 -- Insert data into your database that reflects the sample data shown above
 -- Use hard-coded foreign key IDs when necessary
 -- TODO!
-
-
+INSERT INTO movies 
+VALUES(1,'Batman Begins',2005,'PG-13','Christopher Nolan');
+INSERT INTO movies 
+VALUES(2,'The Dark Knight',2008,'PG-13','Christopher Nolan');
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -114,6 +116,11 @@ CREATE TABLE people (
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT  movie_title ,
+  Release_Year ,
+  MPAA_rating ,
+  director 
+FROM movies  
 
 -- Prints a header for the cast output
 .print ""
