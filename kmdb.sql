@@ -108,6 +108,14 @@ INSERT INTO movies
 VALUES(1,'Batman Begins',2005,'PG-13','Christopher Nolan');
 INSERT INTO movies 
 VALUES(2,'The Dark Knight',2008,'PG-13','Christopher Nolan');
+INSERT INTO movies 
+VALUES(3,'The Dark Knight Risest',2012,'PG-13','Christopher Nolan');
+INSERT INTO topcasts 
+VALUES(1,1,1,'Bruce Wayne');
+INSERT INTO topcasts 
+VALUES(2,1,2,'Alfred');
+INSERT INTO topcasts 
+VALUES(2,1,3,"Ra's Al Ghul");
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -116,11 +124,12 @@ VALUES(2,'The Dark Knight',2008,'PG-13','Christopher Nolan');
 
 -- The SQL statement for the movies output
 -- TODO!
-SELECT  movie_title ,
-  Release_Year ,
-  MPAA_rating ,
+
+SELECT  movie_title,
+  Release_Year,
+  MPAA_rating,
   director 
-FROM movies  
+FROM movies  ;
 
 -- Prints a header for the cast output
 .print ""
@@ -131,3 +140,4 @@ FROM movies
 
 -- The SQL statement for the cast output
 -- TODO!
+
