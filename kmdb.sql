@@ -75,7 +75,7 @@
 
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS topcasts;
-DROP TABLE IF EXISTS people;
+DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS Roles;
 
 -- Create new tables, according to your domain model
@@ -92,13 +92,13 @@ CREATE TABLE movies (
 CREATE TABLE topcasts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   movie_id INTEGER,
-  people_id INTEGER,
+  actor_id INTEGER,
   Role_id INTEGER
 );
 
-CREATE TABLE people (
+CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  people_name TEXT
+  actor_name TEXT
 );
 
 CREATE TABLE Roles (
@@ -118,82 +118,82 @@ VALUES(2,'The Dark Knight',2008,'PG-13','Christopher Nolan');
 INSERT INTO movies 
 VALUES(3,"The Dark Knight Rises",2012,'PG-13','Christopher Nolan');
 
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(1,1,1,1);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(2,1,2,2);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(3,1,3,3);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(4,1,4,4);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(5,1,5,5);
 
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(6,2,1,1);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(7,2,6,6);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(8,2,7,7);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(9,2,2,2);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(10,2,8,4);
 
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(11,3,1,1);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(12,3,5,5);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(13,3,9,8);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(14,3,10,9);
-INSERT INTO topcasts (id, movie_id, people_id, Role_id)
+INSERT INTO topcasts (id, movie_id, actor_id, Role_id)
 VALUES(15,3,11,10);
 
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(1,'Christian Bale');
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(2,'Michael Caine');
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(3,"Liam Neeson");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(4,"Katie Holmes");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(5,"Gary Oldman");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(6,"Heath Ledger");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(7,"Aaron Eckhart");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(8,"Maggie Gyllenhaal");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(9,"Tom Hardy");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(10,"Joseph Gordon-Levitt");
-INSERT INTO people 
+INSERT INTO actors (id, actor_name)
 VALUES(11,"Anne Hathaway");
 
 
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(1,'Bruce Wayne');
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(2,'Alfred');
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(3,"Ra's Al Ghul");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(4,"Rachel Dawes");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(5,"Commissioner Gordon");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(6,"Joker");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(7,"Harvey Dent");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(8,"Bane");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(9,"John Blake");
-INSERT INTO Roles 
+INSERT INTO Roles (id, Role_name)
 VALUES(10,"Selina Kyle");
 
 
@@ -205,7 +205,7 @@ VALUES(10,"Selina Kyle");
 -- The SQL statement for the movies output
 -- TODO!
 
-.width 30 4 5 30
+.width 25 10 5 30
 
 SELECT  movie_title,
   Release_Year,
@@ -224,12 +224,12 @@ FROM movies  ;
 .width 30 20 20
 
 SELECT movie_title, 
-people_name, 
+actor_name, 
 Role_name 
  from topcasts as a 
 left join movies as b  
   on b.id = a.movie_id
-left join people as c 
-  on c.id =a.people_id
+left join actors as c 
+  on c.id =a.actor_id
 left join Roles as d  
   on d.id = a.Role_id;
